@@ -1,8 +1,9 @@
 %DIP19 Assignment 3
 %Character Recongnition
 
-clc; clear all;
-imgInput = imread('../asset/image/test1.jpg');
+clc; clear all; close all;
+imgInput = imread('../asset/image/test4.jpg');
+%imgInput = imread('../asset/image/1_part.png');
 imgInput = rgb2gray(imgInput);
 
 figure, imshow(imgInput);
@@ -21,7 +22,6 @@ ocrResults = ocr(BW, bboxes, 'CharacterSet', '012345678+-*/=', 'TextLayout', 'Wo
 words = {ocrResults(:).Text};
 words = deblank(words)
 
-<<<<<<< HEAD
 %imgInput = imresize(imgInput, 0.5);
 %figure, imshow(imgInput);
 
@@ -29,13 +29,7 @@ words = deblank(words)
 %Iocr = insertObjectAnnotation(imgInput, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
 %figure; imshow(Iocr);
 %ocrResults.Text
-=======
-BW = imbinarize(imgInput);
 
->>>>>>> parent of 500c49f... Update my_test.m
-
-results=ocr(imgInput, 'TextLayout', 'Block');
-results.Text
 
 % imgOutput = my_calculator(imgInput);
 %imgOutput = imgInput;
