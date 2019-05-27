@@ -1,2 +1,4 @@
 .DS_Store
-asset\image\cut\
+asset\image\cut\*.bmp
+asset\image\cut\part\
+
