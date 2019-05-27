@@ -2,34 +2,26 @@
 %Character Recongnition
 
 clc; clear all; close all;
-imgInput = imread('../asset/image/test4.jpg');
-%imgInput = imread('../asset/image/1_part.png');
+imgInput = imread('../asset/image/1.png');
 imgInput = rgb2gray(imgInput);
 
-figure, imshow(imgInput);
+%imgInput = imresize(imgInput, 0.3);
 
-BW = imbinarize(imgInput);
-BW1 = imdilate(BW, strel('disk', 6));
-s = regionprops(BW1, 'BoundingBox');
-bboxes = vertcat(s(:),.BoundingBox);
+threshold = graythresh(imgInput);
+BW = ~im2bw(imgInput, threshold);
+%figure, imshow(BW);
 
-[~,ord] = sort(bboxes(:,2));
-bboxes = bboxes(ord, :);
 
-BW = imdilate(BW, strel('disk', 1));
+BW = bwareaopen(BW, 30);
+figure, imshow(BW);
 
-ocrResults = ocr(BW, bboxes, 'CharacterSet', '012345678+-*/=', 'TextLayout', 'Word');
-words = {ocrResults(:).Text};
-words = deblank(words)
+%cut input image into pieces for future Recongnition.
+cutImg(BW);
 
-%imgInput = imresize(imgInput, 0.5);
-%figure, imshow(imgInput);
-
-%ocrResults = ocr(imgInput, 'CharacterSet', '0123456789+-*/=');
-%Iocr = insertObjectAnnotation(imgInput, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
-%figure; imshow(Iocr);
-%ocrResults.Text
-
+cut1 = imread('../asset/image/cut/1.jpg');
+figure, imshow(cut1);
+ocrResults = ocr(cut1, 'TextLayout', 'Line');
+ocrResults.Text
 
 % imgOutput = my_calculator(imgInput);
 %imgOutput = imgInput;
