@@ -2,7 +2,7 @@
 %Character Recongnition
 
 clc; clear all; close all;
-imgInput = imread('../asset/image/test.jpg');
+imgInput = imread('../asset/image/test4.jpg');
 %imgInput = imread('../asset/image/1_part.png');
 imgInput = rgb2gray(imgInput);
 
@@ -11,7 +11,7 @@ figure, imshow(imgInput);
 BW = imbinarize(imgInput);
 BW1 = imdilate(BW, strel('disk', 6));
 s = regionprops(BW1, 'BoundingBox');
-bboxes = vertcat(s(:).BoundingBox);
+bboxes = vertcat(s(:),.BoundingBox);
 
 [~,ord] = sort(bboxes(:,2));
 bboxes = bboxes(ord, :);
