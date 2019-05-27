@@ -13,7 +13,7 @@ BW = ~im2bw(imgInput, threshold);
 
 
 BW = bwareaopen(BW, 30);
-figure, imshow(BW);
+%figure, imshow(BW);
 
 L = bwlabel(BW);
 [r, c] = find(L==1);
@@ -25,17 +25,19 @@ for i=1:rsz
 	BW(row, col) = 0;
 end
 
-figure, imshow(BW);
+%figure, imshow(BW);
 
 %cut input image into pieces for future Recongnition.
 cutImg(BW);
 
 cut1 = imread('../asset/image/cut/12.bmp');
 figure, imshow(cut1);
-ocrResults = ocr(cut1, 'CharacterSet', '0123456789+-=', 'TextLayout', 'Block');
+
+cutLine(cut1);
+%ocrResults = ocr(cut1, 'CharacterSet', '0123456789+-=', 'TextLayout', 'Block');
 %Iocr = insertObjectAnnotation(cut1, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
 %figure; imshow(Iocr);
-ocrResults.Text
+%ocrResults.Text
 
 % imgOutput = my_calculator(imgInput);
 %imgOutput = imgInput;
