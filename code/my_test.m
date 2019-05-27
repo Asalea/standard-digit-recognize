@@ -15,12 +15,24 @@ BW = ~im2bw(imgInput, threshold);
 BW = bwareaopen(BW, 30);
 figure, imshow(BW);
 
+L = bwlabel(BW);
+[r, c] = find(L==1);
+rsz = size(r);
+rc = [r c];
+for i=1:rsz
+	row = rc(i,1);
+	col = rc(i,2);
+	BW(row, col) = 0;
+end
+
+figure, imshow(BW);
+
 %cut input image into pieces for future Recongnition.
 cutImg(BW);
 
 cut1 = imread('../asset/image/cut/12.bmp');
 figure, imshow(cut1);
-ocrResults = ocr(cut1, 'TextLayout', 'Block');
+ocrResults = ocr(cut1, 'CharacterSet', '0123456789+-=', 'TextLayout', 'Block');
 %Iocr = insertObjectAnnotation(cut1, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
 %figure; imshow(Iocr);
 ocrResults.Text
