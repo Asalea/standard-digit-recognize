@@ -16,11 +16,13 @@ BW = bwareaopen(BW, 30);
 figure, imshow(BW);
 
 %cut input image into pieces for future Recongnition.
-cutImg(imgInput);
+cutImg(BW);
 
-cut1 = imread('../asset/image/cut/12.jpg');
+cut1 = imread('../asset/image/cut/12.bmp');
 figure, imshow(cut1);
 ocrResults = ocr(cut1, 'TextLayout', 'Block');
+%Iocr = insertObjectAnnotation(cut1, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
+%figure; imshow(Iocr);
 ocrResults.Text
 
 % imgOutput = my_calculator(imgInput);

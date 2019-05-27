@@ -4,6 +4,6 @@ function output = my_digit(input_image)
 %the output parameter represents which digit it is.
 
 ocrResults = ocr(input_image, 'CharacterSet', '+-=', 'TextLayout', 'Line');
-%Iocr = insertObjectAnnotation(input_image, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
-%figure; imshow(Iocr);
+Iocr = insertObjectAnnotation(input_image, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
+figure; imshow(Iocr);
 output = ocrResults.Text

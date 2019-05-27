@@ -25,7 +25,7 @@ while(Y+YInc < n)
 
 		nameNum = nameNum + 1;
 		address = strcat(relative, num2str(nameNum));
-		address = strcat(address, '.jpg');
+		address = strcat(address, '.bmp');
 
 		imwrite(imgCell, address);
 	end
