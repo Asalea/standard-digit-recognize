@@ -1,6 +1,5 @@
 function output=cutLine(imgNum)
 
-
 %read line img from local.
 imgName = strcat(num2str(imgNum), '.bmp');
 lineAddress = strcat('../asset/image/cut/', imgName);

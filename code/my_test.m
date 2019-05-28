@@ -2,38 +2,30 @@
 %Character Recongnition
 
 clc; clear all; close all;
-imgInput = imread('../asset/image/1.png');
-imgInput = rgb2gray(imgInput);
 
-threshold = graythresh(imgInput);
-BW = ~im2bw(imgInput, threshold);
-%figure, imshow(BW);
+%To add more image, please add path here.
+cellsize = 6;
+imgPath = cell(1, cellsize);
+imgPath{1, 1}='../asset/image/1.png';
+imgPath{1, 2}='../asset/image/2.png';
+imgPath{1, 3}='../asset/image/3.png';
+imgPath{1, 4}='../asset/image/4.png';
+imgPath{1, 5}='../asset/image/5.png';
+imgPath{1, 6}='../asset/image/example.png';
 
-BW = bwareaopen(BW, 30);
-%figure, imshow(BW);
-
-%delete all border in img.
-L = bwlabel(BW);
-[r, c] = find(L==1);
-rsz = size(r);
-rc = [r c];
-for i=1:rsz
-	row = rc(i,1);
-	col = rc(i,2);
-	BW(row, col) = 0;
+%clear result dir.
+fprintf('Clearing result directory...\n');
+resultAddress = '../asset/image/result/';
+if exist(resultAddress, 'dir')
+	rmdir(resultAddress);
 end
-%figure, imshow(BW);
+mkdir(resultAddress);
 
-my_calculator(BW);
-
-%ocrResults = ocr(cut1, 'CharacterSet', '0123456789+-=', 'TextLayout', 'Block');
-%Iocr = insertObjectAnnotation(cut1, 'rectangle', ocrResults.WordBoundingBoxes, ocrResults.WordConfidences);
-%figure; imshow(Iocr);
-%ocrResults.Text
-
-% imgOutput = my_calculator(imgInput);
-%imgOutput = imgInput;
-
+for i=1:cellsize
+	imgInput = imread(imgPath{1,i});
+	imgOutput = my_calculator(imgInput);
+	imwrite(imgOutput, [resultAddress, num2str(i), '.jpg']);
+end
 %subplot(1, 2, 1);
 %imshow(imgInput);
 %subplot(1, 2, 2);

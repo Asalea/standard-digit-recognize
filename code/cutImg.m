@@ -32,3 +32,4 @@ while(Y+YInc < n)
 	X=1;
 	Y=Y+YInc;
 end
+output = 1;
