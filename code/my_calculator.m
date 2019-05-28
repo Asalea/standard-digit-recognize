@@ -71,7 +71,7 @@ for i=1:30
 	cImg2 = imread(strcat(dirAddress, '2.bmp'));
 
 	d0 = str2num(my_digit(cImg0));
-	c1 = my_operator(cImg1); c1 = c1(1);
+	c1 = my_operator(cImg1);
 	d2 = str2num(my_digit(cImg2));
 
 	if strcmp(c1, '-')

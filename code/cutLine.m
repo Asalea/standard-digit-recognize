@@ -28,6 +28,7 @@ for i=1:num-2
 	width = cmax - cmin;
 
 	imgCharacter = imcrop(imgLine, [cmin-10, rmin-10, width+20, height+20]);
+	imgCharacter = imresize(imgCharacter, [55 55]);
     %figure, imshow(imgLine);
 	%figure, imshow(imgCharacter);
 
