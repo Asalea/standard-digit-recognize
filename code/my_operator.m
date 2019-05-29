@@ -3,10 +3,6 @@ function output = my_operator(input_image)
 %the input parameter is a matrix of an image which contains an operator.
 %the output parameter represents which operator it is. 
 
-%ocrResults = ocr(input_image, 'CharacterSet', '+-=', 'TextLayout', 'Line');
-%figure, imshow(input_image);
-%output = ocrResults.Text;
-
 templeAddress = '../asset/image/template/';
 t = cell(2);
 t{1, 1} = imread([templeAddress, '+.bmp']);

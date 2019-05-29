@@ -1,4 +1,6 @@
 function output=cutLine(imgNum)
+%The input is the serial number of line image(results of function cutImg) and write all characters in line to local.
+%The location of line image is fixed, please don't change it.
 
 %read line img from local.
 imgName = strcat(num2str(imgNum), '.bmp');

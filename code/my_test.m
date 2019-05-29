@@ -23,28 +23,28 @@ mkdir(resultAddress);
 
 
 %display all 6 test image.
+%{
 for i=1:cellsize
 	imgInput = imread(imgPath{1,i});
 	imgOutput = my_calculator(imgInput);
-	imwrite(imgOutput, [resultAddress, num2str(i), '.jpg']);
+	%imwrite(imgOutput, [resultAddress, num2str(i), '.jpg']);
 	%subplot(1, 2, 1);
 	%imshow(imgInput);
 	%subplot(1, 2, 2);
 	%imshow(imgOutput);
 end
+%}
 
-%{
 	
-%You can choose which img to test here.
-
-imgnum = 1;
+%You can choose which img to test here.For example, imgnum = 2 means test '../asset/image/2.png'.
+imgnum = 2;
 imgInput = imread(imgPath{1,imgnum});
 imgOutput = my_calculator(imgInput);
-imwrite(imgOutput, [resultAddress, num2str(i), '.jpg']);
-%subplot(1, 2, 1);
-%imshow(imgInput);
-%subplot(1, 2, 2);
-%imshow(imgOutput);
-%}
+imwrite(imgOutput, [resultAddress, num2str(imgnum), '.jpg']);
+subplot(1, 2, 1);
+imshow(imgInput);
+subplot(1, 2, 2);
+imshow(imgOutput);
+
 
 %Result has been output to '../asset/image/result/'

@@ -3,10 +3,6 @@ function output = my_digit(input_image)
 %the input parameter is a matrix of an image which contains a digit.
 %the output parameter represents which digit it is.
 
-%ocrResults = ocr(input_image, 'CharacterSet', '0123456789', 'TextLayout', 'Line');
-%figure, imshow(input_image);
-%output = ocrResults.Text;
-
 templeAddress = '../asset/image/template/';
 %read template img.
 %Of course we can read templates in preprocess, 

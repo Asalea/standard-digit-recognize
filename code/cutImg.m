@@ -1,4 +1,7 @@
 function output = cutImg(BW)
+%This function intends to cut all lines from original img, then save them to local.
+%It requires image of fixd width and height.
+
 nameNum = 0;
 relative = '../asset/image/cut/';
 if exist(relative, 'dir')
